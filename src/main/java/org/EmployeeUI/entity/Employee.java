@@ -49,4 +49,9 @@ public class Employee {
     public Employee(String fullName) {
         this.fullName = fullName;
     }
+
+    public Employee(Employee employee) {
+        this.id = employee.getId();
+        this.fullName=employee.getFullName();
+    }
 }

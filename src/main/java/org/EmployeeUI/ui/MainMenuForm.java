@@ -23,6 +23,7 @@ import static com.vaadin.ui.UI.getCurrent;
 import static org.EmployeeUI.mq.RabbitEmployee.EMPLOYEE_DELETE_EVENT;
 import static org.EmployeeUI.mq.RabbitEmployee.EMPLOYEE_SELECT_EVENT;
 import static org.EmployeeUI.mq.RabbitEmployee.TO_SERVICE_EMPLOYEE_FANOUT_EXCHANGE;
+import static org.EmployeeUI.mq.RabbitMqPublisher.createMessage;
 ;
 
 
@@ -34,6 +35,7 @@ import java.util.List;
 import org.EmployeeUI.entity.Employee;
 
 
+import org.EmployeeUI.mq.RabbitMqPublisher;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -76,11 +78,7 @@ public class MainMenuForm extends Panel implements View{
             employee = employeeGrid.asSingleSelect().getValue();
             RabbitTemplate rabbitTemplate = ((NavigatorUI) getCurrent()).getRabbitTemplate();
             try {
-                String jsonEmployeeForRemove = new ObjectMapper().writeValueAsString(employee);
-                Message msg = createMessage(EMPLOYEE_DELETE_EVENT, jsonEmployeeForRemove);
-                rabbitTemplate.setExchange(TO_SERVICE_EMPLOYEE_FANOUT_EXCHANGE);
-                rabbitTemplate.send(msg);
-                //rabbitTemplate.convertAndSend("", jsonEmployeeForRemove);
+                new RabbitMqPublisher().sendDeleteMessage(rabbitTemplate, employee);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
@@ -116,12 +114,7 @@ public class MainMenuForm extends Panel implements View{
     }
 
 
-    public static Message createMessage(String action, String payload){
-        return MessageBuilder.withBody(payload.getBytes())
-                .setHeader("action", action)
-                .build();
 
-    }
 
     private void addEmployeeWindow() throws NullPointerException, IllegalArgumentException {
         EmployeeWindow employeeWindow = new EmployeeWindow();
