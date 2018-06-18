@@ -10,10 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
 
-import static org.EmployeeUI.mq.RabbitEmployee.EMPLOYEE_CREATED_EVENT;
-import static org.EmployeeUI.mq.RabbitEmployee.EMPLOYEE_DELETED_EVENT;
-import static org.EmployeeUI.mq.RabbitEmployee.FROM_SERVICE_EMPLOYEE_EVENT_QUEUE;
 import static com.vaadin.ui.UI.getCurrent;
+import static org.EmployeeUI.mq.RabbitEmployee.*;
 
 @EnableRabbit //нужно для активации обработки аннотаций @RabbitListener
 @Component
@@ -29,6 +27,14 @@ public class RabbitMqListener {
             body = new String(message.getBody(), "UTF-8");
             if (EMPLOYEE_CREATED_EVENT.equals(action)) {
                 System.out.println("get message with action "+action+" "+body);
+                WebSocketMsg wsMsg = new WebSocketMsg(WebSocketMsg.MsgType.EMPLOYEE_CREATE);
+                wsMsg.setText(body);
+                Broadcaster.broadcast(wsMsg);
+            }else if (EMPLOYEE_UPDATED_EVENT.equals(action)) {
+                System.out.println("get message with action "+action+" "+body);
+                WebSocketMsg wsMsg = new WebSocketMsg(WebSocketMsg.MsgType.EMPLOYEE_UPDATE);
+                wsMsg.setText(body);
+                Broadcaster.broadcast(wsMsg);
             }else if (EMPLOYEE_DELETED_EVENT.equals(action)) {
                 System.out.println("get message with action "+action+" "+body);
                 WebSocketMsg wsMsg = new WebSocketMsg(WebSocketMsg.MsgType.EMPLOYEE_DELETE);

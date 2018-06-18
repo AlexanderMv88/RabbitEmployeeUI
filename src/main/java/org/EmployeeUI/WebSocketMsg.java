@@ -11,7 +11,7 @@ import org.EmployeeUI.entity.Employee;
 
 
 public class WebSocketMsg {
-    public enum MsgType {EMPTY, EMPLOYEE_DELETE}
+    public enum MsgType {EMPTY, EMPLOYEE_DELETE, EMPLOYEE_CREATE, EMPLOYEE_UPDATE}
     private MsgType msgType;
 
     private String status = "";

@@ -7,6 +7,7 @@ package org.EmployeeUI.ui;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
@@ -25,6 +26,9 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PreDestroy;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 /**
@@ -78,15 +82,58 @@ public class NavigatorUI extends UI implements Broadcaster.BroadcastListener {
     @Override
     public void receiveBroadcast(WebSocketMsg message) {
         getUI().access(() -> {
-
+            System.out.println("Получил сообщение в UI = " + message);
+            String jsonEmployee;
+            Employee employee = null;
             switch (message.getMsgType()) {
+
                 case EMPLOYEE_DELETE:
-                    System.out.println("Получил сообщение в UI = " + message);
-                    String jsonEmployee = message.getText();
-                    Employee employee = null;
+
+
                     try {
+                        jsonEmployee = message.getText();
                         employee = new ObjectMapper().readValue(jsonEmployee, Employee.class);
                         mainMenuForm.employees.remove(employee);
+                        mainMenuForm.employeeGrid.setItems(mainMenuForm.employees);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                case EMPLOYEE_CREATE:
+
+
+                    try {
+                        jsonEmployee = message.getText();
+                        employee = new ObjectMapper().readValue(jsonEmployee, Employee.class);
+                        mainMenuForm.employees.add(employee);
+                        mainMenuForm.employeeGrid.setItems(mainMenuForm.employees);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+
+                case EMPLOYEE_UPDATE:
+
+
+                    try {
+                        String jsonEmployees = message.getText();
+
+                        ObjectMapper mapper = new ObjectMapper();
+                        CollectionType javaType = mapper.getTypeFactory()
+                                .constructCollectionType(List.class, Employee.class);
+
+                        List<Employee> employees = mapper.readValue(jsonEmployees, javaType);
+                        Employee oldEmployee = employees.get(0);
+                        Employee newEmployee = employees.get(1);
+                        mainMenuForm.employees.remove(oldEmployee);
+                        mainMenuForm.employees.add(newEmployee);
+
+                        mainMenuForm.employees.sort(
+                                Comparator.comparing(Employee::getId)
+                        );
+
                         mainMenuForm.employeeGrid.setItems(mainMenuForm.employees);
                     } catch (IOException e) {
                         e.printStackTrace();
