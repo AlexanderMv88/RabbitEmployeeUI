@@ -1,14 +1,17 @@
 package org.EmployeeUI.entity;
 
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-
+@Data
+@NoArgsConstructor
 public class Employee {
 
     private long id;
     private String fullName;
 
+    /*
     public long getId() {
         return id;
     }
@@ -26,7 +29,7 @@ public class Employee {
     }
 
     public Employee() {
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
