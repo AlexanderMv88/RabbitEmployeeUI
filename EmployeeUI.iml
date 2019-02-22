@@ -80,7 +80,7 @@
     <orderEntry type="library" name="Maven: com.rabbitmq:amqp-client:5.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.2.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.5" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.codeborne:selenide:4.11.2" level="project" />

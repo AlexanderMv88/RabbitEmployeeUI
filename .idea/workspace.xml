@@ -29,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmployeeUiApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EmployeeUiApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/EmployeeUiApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/mq/RabbitMqPublisher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,6 +79,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -107,20 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RabbitEmployee.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/mq/RabbitEmployee.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EmployeeWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/ui/EmployeeWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+              <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -176,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/Formats.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/mq/RabbitEmployeeStates.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/EmployeeUiApplication.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/entity/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/mq/RabbitConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/mq/RabbitEmployee.java" />
@@ -187,6 +186,7 @@
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/ui/NavigatorUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/Broadcaster.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/EmployeeUI/WebSocketMsg.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -458,9 +458,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test_in_EmployeeUI - 2018.06.18 at 23h 31m 54s.xml">
-      <configuration name="test in EmployeeUI" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="test_in_EmployeeUI - 2018.06.18 at 23h 33m 03s.xml">
       <configuration name="test in EmployeeUI" configurationId="JUnit" />
     </history-entry>
@@ -488,6 +485,9 @@
     <history-entry file="test_in_EmployeeUI - 2019.02.22 at 01h 02m 25s.xml">
       <configuration name="test in EmployeeUI" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="test_in_EmployeeUI - 2019.02.22 at 07h 12m 21s.xml">
+      <configuration name="test in EmployeeUI" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1058" extended-state="6" />
@@ -503,16 +503,16 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32983193" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32975295" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2529349" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32867885" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2529349" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32867885" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36949515" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.36949515" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info active="true" anchor="right" id="Coverage" order="3" side_tool="true" visible="true" weight="0.3296875" />
@@ -787,13 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="93" column="21" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/EmployeeUI/StepsDefinition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
@@ -843,7 +836,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/ui/EmployeeWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <caret line="15" column="41" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -870,7 +863,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/mq/RabbitMqPublisher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -904,10 +897,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/EmployeeUI/EmployeeUiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
         </state>
       </provider>
     </entry>
