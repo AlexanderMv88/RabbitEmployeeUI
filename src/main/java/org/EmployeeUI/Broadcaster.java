@@ -16,15 +16,11 @@ import java.util.concurrent.Executors;
 @Component
 @EnableScheduling
 public class Broadcaster implements Serializable {
-
     static ExecutorService executorService = Executors.newSingleThreadExecutor();
-
 
     public interface BroadcastListener {
         void receiveBroadcast(WebSocketMsg message);
-
     }
-
 
     private static LinkedList<BroadcastListener> listeners = new LinkedList<BroadcastListener>();
     private static Map<BroadcastListener, String> userlist = new ConcurrentHashMap<BroadcastListener, String>();
@@ -57,11 +53,6 @@ public class Broadcaster implements Serializable {
             //broadcast(msg);
         }
     }
-
-
-    /*public static void sendMsgToAll() {
-
-    }*/
 
     public static synchronized void unregister(BroadcastListener listener) {
         listeners.remove(listener);
@@ -108,15 +99,10 @@ public class Broadcaster implements Serializable {
 
 
     }
-
 */
-
     @Scheduled(fixedRate=1000)
     public static void timer(){
         WebSocketMsg msg = new WebSocketMsg("time");
         broadcast(msg);
-
     }
-
-
 }

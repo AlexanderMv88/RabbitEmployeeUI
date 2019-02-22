@@ -13,15 +13,12 @@ import org.EmployeeUI.entity.Employee;
 public class WebSocketMsg {
     public enum MsgType {EMPTY, EMPLOYEE_DELETE, EMPLOYEE_CREATE, EMPLOYEE_UPDATE}
     private MsgType msgType;
-
     private String status = "";
     private String sendto = "";
     private String text = "";
     private String username = "";
-
     private String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     private String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-
 
     public MsgType getMsgType() {
         return msgType;
@@ -90,23 +87,17 @@ public class WebSocketMsg {
     private Employee empl;
 
     public WebSocketMsg(String status, String sendto, String text, String username) {
-
         this.status = status;
         this.sendto = sendto;
         this.text = text;
         this.username = username;
         this.msgType = msgType.EMPTY;
-
-
-
-
     }
 
     public WebSocketMsg(String status) {
         this.status = status;
         this.msgType = msgType.EMPTY;
     }
-
 
     public WebSocketMsg(String status, String text) {
         this.status = status;

@@ -1,6 +1,5 @@
 package org.EmployeeUI;
 
-import com.vaadin.annotations.Push;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

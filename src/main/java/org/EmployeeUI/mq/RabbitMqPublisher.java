@@ -17,7 +17,6 @@ public class RabbitMqPublisher {
         return MessageBuilder.withBody(payload.getBytes())
                 .setHeader("action", action)
                 .build();
-
     }
 
     public void sendUpdateMessage(RabbitTemplate rabbitTemplate, Employee oldEmployee, Employee newEmployee) throws JsonProcessingException {

@@ -17,15 +17,14 @@ import static org.EmployeeUI.mq.RabbitEmployee.*;
 @Configuration
 public class RabbitConfiguration {
 
-
     private static final long cal = GregorianCalendar.getInstance().getTimeInMillis();
 
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory connectionFactory =
-                new CachingConnectionFactory("172.16.175.128");
-        connectionFactory.setUsername("admin");
-        connectionFactory.setPassword("admin");
+                new CachingConnectionFactory("localhost");
+        connectionFactory.setUsername("guest");
+        connectionFactory.setPassword("guest");
         return connectionFactory;
     }
 
@@ -39,21 +38,16 @@ public class RabbitConfiguration {
         return new RabbitTemplate(connectionFactory());
     }
 
-
     @Bean
     public Queue employeeEventQueue() {
-
         System.out.println("Ожидаю сообщений о событиях CRUD на канале: "+ FROM_SERVICE_EMPLOYEE_EVENT_QUEUE);
         return new Queue(FROM_SERVICE_EMPLOYEE_EVENT_QUEUE);
     }
-
-
 
     @Bean
     public FanoutExchange toServiceEmployeeFanoutExchange(){
         return new FanoutExchange(TO_SERVICE_EMPLOYEE_FANOUT_EXCHANGE);
     }
-
 
     @Bean
     public Queue fromServiceEmployeeEventQueue() {
@@ -69,7 +63,4 @@ public class RabbitConfiguration {
     public Binding bindingQueueToFanoutExchange(){
         return BindingBuilder.bind(fromServiceEmployeeEventQueue()).to(fromServiceEmployeeFanoutExchange());
     }
-
-
-
 }

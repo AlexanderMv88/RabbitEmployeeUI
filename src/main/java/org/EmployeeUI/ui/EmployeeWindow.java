@@ -6,22 +6,14 @@
 package org.EmployeeUI.ui;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaadin.ui.*;
 import org.EmployeeUI.entity.Employee;
 import org.EmployeeUI.mq.RabbitMqPublisher;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Field;
 
 import static com.vaadin.ui.UI.getCurrent;
-import static org.EmployeeUI.mq.RabbitEmployee.*;
-import static org.EmployeeUI.mq.RabbitMqPublisher.createMessage;
 
 
 public class EmployeeWindow extends Window{
@@ -43,17 +35,13 @@ public class EmployeeWindow extends Window{
     public EmployeeWindow() {
         actionBtn.setCaption("Добавить пользователя");
         setCommonContent();
-        
         actionBtn.addClickListener(e -> addObj());
     }
     
     private void addObj() {
-
         Employee employee = new Employee();
         employee.setFullName(fioTField.getValue());
-        
         /*RestTemplate restTemplate = (RestTemplate) ((NavigatorUI) getCurrent()).restTemplate;
-        
         HttpHeaders headers = new HttpHeaders();
         headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -68,16 +56,13 @@ public class EmployeeWindow extends Window{
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
         this.close();
     }
     
     private void changeObj(Employee oldEmployee) {
         Employee employee = new Employee(oldEmployee);
         employee.setFullName(fioTField.getValue());
-        
         /*RestTemplate restTemplate = (RestTemplate) ((NavigatorUI) getCurrent()).restTemplate;
-        
         HttpHeaders headers = new HttpHeaders();
         headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -87,9 +72,7 @@ public class EmployeeWindow extends Window{
         restTemplate.put("http://localhost:8888/api/changeEmployee/"+ oldEmployee.getId(), requestBody, Employee.class);*/
         RabbitTemplate rabbitTemplate = ((NavigatorUI) getCurrent()).getRabbitTemplate();
         try {
-
             new RabbitMqPublisher().sendUpdateMessage(rabbitTemplate, oldEmployee, employee);
-
             //rabbitTemplate.convertAndSend("", jsonEmployeeForRemove);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -97,24 +80,14 @@ public class EmployeeWindow extends Window{
         this.close();
     }
 
-    
-    
     private void setCommonContent(){
-        
         Field[] fields = Employee.class.getDeclaredFields();
-
         vLayout.addComponents(fioTField);
         HorizontalLayout hLayout = new HorizontalLayout(actionBtn,cancelBtn);
         mainLayout.addComponents(vLayout, hLayout);
-        
         this.setClosable(false);
         this.setModal(true);
         this.setResizable(false);
         this.setContent(mainLayout);
-        
     }
-
-
-
-
 }

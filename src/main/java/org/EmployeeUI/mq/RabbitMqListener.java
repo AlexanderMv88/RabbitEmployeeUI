@@ -17,7 +17,6 @@ import static org.EmployeeUI.mq.RabbitEmployee.*;
 @Component
 public class RabbitMqListener {
 
-
     @RabbitListener(queues = FROM_SERVICE_EMPLOYEE_EVENT_QUEUE)
     public void fromServiceEmployee(Message message){
         System.out.println("get message "+message);
@@ -44,8 +43,6 @@ public class RabbitMqListener {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
     }
-
-    }
+}
 

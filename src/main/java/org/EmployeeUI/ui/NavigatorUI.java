@@ -14,7 +14,6 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
-
 import org.EmployeeUI.Broadcaster;
 import org.EmployeeUI.WebSocketMsg;
 import org.EmployeeUI.entity.Employee;
@@ -26,7 +25,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PreDestroy;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -40,15 +38,12 @@ import java.util.List;
 @SpringUI
 @Theme("valo")
 public class NavigatorUI extends UI implements Broadcaster.BroadcastListener {
-
+    //public ... Инкапсуляция? Не нес слышал))))
     private MainMenuForm mainMenuForm = new MainMenuForm();
     Navigator navigator;
-
     public static final String MAIN_MENU_FORM = "mainMenuForm";
     public RestTemplate restTemplate = new RestTemplate();
-
     private RabbitTemplate rabbitTemplate;
-
     public RabbitTemplate getRabbitTemplate() {
         return rabbitTemplate;
     }
@@ -78,7 +73,6 @@ public class NavigatorUI extends UI implements Broadcaster.BroadcastListener {
         return navigator;
     }
 
-
     @Override
     public void receiveBroadcast(WebSocketMsg message) {
         getUI().access(() -> {
@@ -86,10 +80,7 @@ public class NavigatorUI extends UI implements Broadcaster.BroadcastListener {
             String jsonEmployee;
             Employee employee = null;
             switch (message.getMsgType()) {
-
                 case EMPLOYEE_DELETE:
-
-
                     try {
                         jsonEmployee = message.getText();
                         employee = new ObjectMapper().readValue(jsonEmployee, Employee.class);
@@ -101,8 +92,6 @@ public class NavigatorUI extends UI implements Broadcaster.BroadcastListener {
 
                     break;
                 case EMPLOYEE_CREATE:
-
-
                     try {
                         jsonEmployee = message.getText();
                         employee = new ObjectMapper().readValue(jsonEmployee, Employee.class);
@@ -113,32 +102,24 @@ public class NavigatorUI extends UI implements Broadcaster.BroadcastListener {
                     }
 
                     break;
-
                 case EMPLOYEE_UPDATE:
-
-
                     try {
                         String jsonEmployees = message.getText();
-
                         ObjectMapper mapper = new ObjectMapper();
                         CollectionType javaType = mapper.getTypeFactory()
                                 .constructCollectionType(List.class, Employee.class);
-
                         List<Employee> employees = mapper.readValue(jsonEmployees, javaType);
                         Employee oldEmployee = employees.get(0);
                         Employee newEmployee = employees.get(1);
                         mainMenuForm.employees.remove(oldEmployee);
                         mainMenuForm.employees.add(newEmployee);
-
                         mainMenuForm.employees.sort(
                                 Comparator.comparing(Employee::getId)
                         );
-
                         mainMenuForm.employeeGrid.setItems(mainMenuForm.employees);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                     break;
             }
         });

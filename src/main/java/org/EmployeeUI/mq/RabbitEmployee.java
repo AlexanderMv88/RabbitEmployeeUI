@@ -2,9 +2,7 @@ package org.EmployeeUI.mq;
 
 public class RabbitEmployee {
 
-
     public static final String TO_SERVICE_EMPLOYEE_FANOUT_EXCHANGE = "to-service-employee-fanout-exchange";
-
 
     public static final String EMPLOYEE_SELECT_EVENT = "employee-select-event";
     public static final String EMPLOYEE_DELETE_EVENT = "employee-delete-event";
